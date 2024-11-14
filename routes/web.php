@@ -23,6 +23,11 @@ Route::get('/dashboard', function () {
 })->middleware('auth');
 
 
+Route::middleware(['auth'])->group(function () {
+    Route::resource('posts', PostController::class);
+});
+
+
 
 Route::get('/dashboard', [PostController::class, 'index'])->middleware('auth');
 
